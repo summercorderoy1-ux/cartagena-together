@@ -1,0 +1,5 @@
+# Downloaded third-party repos (each lives on GitHub already; see README)
+repos/
+# Local tool settings
+.claude/
+.DS_Store

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Cartagena Together</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="320" height="180"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="pill" id="hud-place">Cartagena</div>
+        <div class="pill small" id="hud-leader"></div>
+      </div>
+      <div class="hud-right">
+        <div class="pill" title="Seashells">🐚 <span id="hud-shells">0/0</span></div>
+        <div class="pill" title="Memories">📷 <span id="hud-mem">0/0</span></div>
+        <button class="pill btn" id="btn-album" title="Photo album (P)">Album</button>
+        <button class="pill btn" id="btn-map" title="Map (M)">Map</button>
+        <button class="pill btn" id="btn-follow" title="Partner follows when idle (F)">Follow</button>
+        <button class="pill btn" id="btn-music" title="Music on/off (N)">♪</button>
+      </div>
+    </div>
+
+    <div id="prompt" class="hidden"></div>
+    <div id="toast" class="hidden"></div>
+
+    <div id="dialog" class="hidden">
+      <div id="dialog-name"></div>
+      <div id="dialog-text"></div>
+      <div id="dialog-choices"></div>
+      <div id="dialog-next">▼</div>
+    </div>
+
+    <div id="flash"></div>
+    <div id="fade"></div>
+
+    <!-- Title screen -->
+    <div id="title" class="overlay sunset">
+      <h1>Cartagena <span>Together</span></h1>
+      <p class="sub">Juntos en Cartagena · explore, collect seashells, and make memories</p>
+      <div class="couple">
+        <label class="who">
+          <canvas class="preview" id="prev-him" width="14" height="18"></canvas>
+          <input id="name-him" maxlength="12" value="Monty" autocomplete="off" aria-label="His name">
+          <span class="keys" id="ctl-him">WASD to walk · E to act</span>
+        </label>
+        <div class="heart">♥</div>
+        <label class="who">
+          <canvas class="preview" id="prev-her" width="14" height="18"></canvas>
+          <input id="name-her" maxlength="12" value="Summer" autocomplete="off" aria-label="Her name">
+          <span class="keys" id="ctl-her">Arrows to walk · Enter to act</span>
+        </label>
+      </div>
+      <div class="row">
+        <button class="big" id="btn-start">Start a new trip</button>
+        <button class="big alt hidden" id="btn-continue">Continue</button>
+      </div>
+      <p class="controls">Two players on one keyboard · walk into the sea to swim · hop in a kayak · stand together at ♥ spots for photos<br>P album · M map · N music · F partner follows when idle (for one player)</p>
+    </div>
+
+    <!-- Album -->
+    <div id="album" class="overlay hidden">
+      <h2>Our Cartagena Album</h2>
+      <p id="album-sub"></p>
+      <div id="album-grid"></div>
+      <button class="big" id="btn-album-close">Close</button>
+    </div>
+
+    <!-- Map -->
+    <div id="mapview" class="overlay hidden">
+      <h2 id="map-title">Map</h2>
+      <canvas id="mapcanvas"></canvas>
+      <p class="legend"><b class="k-you">●</b> <span id="map-you">Monty</span> &nbsp; <b class="k-her">●</b> <span id="map-her">Summer</span> &nbsp; <b class="k-mem">♥</b> photo spot &nbsp; <b class="k-shell">●</b> seashell &nbsp; <b class="k-boat">●</b> boat to the islands</p>
+      <button class="big" id="btn-map-close">Close</button>
+    </div>
+
+    <!-- Ending -->
+    <div id="ending" class="overlay clear hidden">
+      <h1 id="ending-title"></h1>
+      <p class="sub" id="ending-sub"></p>
+      <div class="row">
+        <button class="big" id="btn-end-album">See our album</button>
+        <button class="big alt" id="btn-end-play">Keep exploring</button>
+      </div>
+    </div>
+
+    <!-- Touch controls -->
+    <div id="touch" class="hidden">
+      <div class="dpad">
+        <button data-k="up" class="t-up">▲</button>
+        <button data-k="left" class="t-left">◀</button>
+        <button data-k="right" class="t-right">▶</button>
+        <button data-k="down" class="t-down">▼</button>
+      </div>
+      <div class="ab">
+        <button data-k="act2" class="t-b">B</button>
+        <button data-k="act" class="t-a">A</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/sprites.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
